@@ -1,5 +1,4 @@
 import { computed, decorate, observable } from 'mobx';
-import { toast } from 'react-toastify';
 
 export interface ITodo {
   id: number;
@@ -23,9 +22,6 @@ export class TodoStore {
   public addTodo = (todo: ITodo) => {
     this.todos.push(todo);
     this.filteredTodos.push(todo);
-    toast.success('New Todo added', {
-      position: toast.POSITION.BOTTOM_CENTER
-    });
   };
 
   public toggleCompleted = (id: number) => {
@@ -66,9 +62,6 @@ export class TodoStore {
 
   public deleteTodo = (id: number) => {
     this.todos = this.todos.filter(todo => todo.id !== id);
-    toast.info('Todo deleted', {
-      position: toast.POSITION.BOTTOM_CENTER
-    });
     this.filteredTodos = this.todos
   };
 
